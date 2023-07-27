@@ -10,7 +10,7 @@ Code in this repo is about the decentralized car-like robotic swarm in a simulat
 The video link: [youtube](https://www.youtube.com/watch?v=qdYr3BKHsdM) and [bilibili](https://www.bilibili.com/video/BV11e4y1n7JL/?spm_id_from=333.999.0.0&vd_source=52c6d27efb21131ce8de5028bf3873c7).
 
 <p align="center">
-  <img src="figs/header.gif" width = "1200"/>
+  <img src="figs/header.gif" width = "800"/>
 </p>
 
 
@@ -57,7 +57,7 @@ Then, you can click the **2D Nav Goal** at **anywhere** in **RVIZ** to trigger t
 Here is an example:
 
 <p align="center">
-  <img src="figs/demo.gif" width = "1200"/>
+  <img src="figs/demo.gif" width = "800"/>
 </p>
 **Tip:** We recommend developers to use **rosmon** to replace the **roslaunch** since rosmon is more friendly to mulit-robot systems.
 
