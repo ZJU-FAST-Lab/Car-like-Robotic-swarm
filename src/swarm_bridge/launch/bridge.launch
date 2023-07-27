@@ -1,0 +1,18 @@
+<launch>
+
+  <arg name="car_id"/>
+  <arg name="broadcast_ip"/>
+  <!-- <arg name="odom_topic"> -->
+
+  <node pkg="swarm_bridge" name="agent_$(arg car_id)_bridge_node" type="bridge_node" output="screen">
+  
+    <!-- <remap from="~my_odom" to="/vins_estimator/imu_propagate"/> -->
+
+    <param name="broadcast_ip" value="$(arg broadcast_ip)" type="string"/>
+    <param name="car_id" value="$(arg car_id)"/>
+    <!-- <param name="odom_topic" value="$(arg odom_topic)"/> -->
+    <param name="odom_max_freq" value="100"/>
+
+  </node>
+
+</launch>

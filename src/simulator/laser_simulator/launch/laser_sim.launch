@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+    <arg name="car_id" />
+    <arg name="odom_topic" />
+
+    <node pkg="laser_simulator" type="laser_sim_node" name="car_$(arg car_id)_laser_simulator" output="screen">
+        <!-- <rosparam file="$(find laser_simulator)/launch/params.yaml" command="load" /> -->
+        <param name="car_id" value="$(arg car_id)" />
+        <param name="map_topic" value="/map_generator/global_cloud"/>
+        <param name="odom_topic" value="$(arg odom_topic)"/>
+        <param name="laser_pcd_topic" value="car_$(arg car_id)_local_pointcloud"/>
+        <param name="laser_range_topic" value="car_$(arg car_id)_laser_range" />
+        <param name="sensing_horizon" value="25"/>
+        <param name="sensing_rate" value="20"/>
+        <param name="pc_resolution" value="0.1"/>
+        <param name="vtc_laser_line_num" value="16"/>
+        <param name="vtc_laser_range_dgr" value="30.0"/>
+        <param name="hrz_limited" value="false"/>
+        <param name="hrz_laser_range_dgr" value="90.0"/>
+        <param name="hrz_laser_line_num" value="360"/>
+        <param name="use_resolution_filter" value="true"/>
+
+    </node>
+</launch>

@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/aolai/car_swarm_carla/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/aolai/car_swarm_carla/src/Minco/utils/DecompROS/decomp_ros_utils/include/**",
+        "/home/aolai/car_swarm_carla/src/mapping/include/**",
+        "/home/aolai/car_swarm_carla/src/mpc_control/mpc/include/**",
+        "/home/aolai/car_swarm_carla/src/Minco/traj_planner/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}

@@ -1,0 +1,126 @@
+<launch>
+  <arg name="cars_num"/>
+  <arg name="car_id"/>  
+  <arg name="car_width"/>
+  <arg name="car_length"/>
+  <arg name="car_wheelbase"/>
+  <arg name="car_front_suspension"/>
+  <arg name="car_rear_suspension"/>
+  <arg name="car_max_steering_angle"/>
+  <arg name="car_d_cr"/>  
+  
+  <arg name="map_size_x"/>
+  <arg name="map_size_y"/>
+  <arg name="map_size_z"/>
+
+  <arg name="origin_x"/>
+  <arg name="origin_y"/>
+  <arg name="origin_z"/>
+
+  <arg name="target_x"/>
+  <arg name="target_y"/>
+  <arg name="target_yaw"/>
+  
+  <arg name="odometry_topic"/>
+  <arg name="lidar_topic"/>
+  <arg name="map_pub_topic"/>
+
+  <arg name="lidar_height"/>
+
+  <arg name="max_vel"/>
+  <arg name="max_acc"/>
+  <arg name="max_cur"/>
+  <!-- <arg name="planning_horizon"/> -->
+
+
+  
+  <!-- main node -->
+  <node pkg="traj_planner" name="car_$(arg car_id)_planner_node" type="planner_node" output="screen">  
+    <!-- planning fsm -->
+    <param name="vehicle/cars_num" value="$(arg cars_num)" />
+    <param name="vehicle/car_id"  value="$(arg car_id)" />
+    <param name="vehicle/car_width"  value="$(arg car_width)" />
+    <param name="vehicle/car_length"  value="$(arg car_length)" />
+    <param name="vehicle/car_wheelbase"  value="$(arg car_wheelbase)" />
+    <param name="vehicle/car_front_suspension"  value="$(arg car_front_suspension)" />
+    <param name="vehicle/car_rear_suspension"  value="$(arg car_rear_suspension)" />
+    <param name="vehicle/car_max_steering_angle"  value="$(arg car_max_steering_angle)" />
+    <param name="vehicle/car_d_cr"  value="$(arg car_d_cr)" />
+
+
+    <param name="mapping/resolution"      value="0.3" /> 
+    <param name="mapping/map_size_x"   value="$(arg map_size_x)" /> 
+    <param name="mapping/map_size_y"   value="$(arg map_size_y)" /> 
+    <param name="mapping/map_size_z"   value="$(arg map_size_z)" /> 
+    <param name="mapping/origin_x"   value="$(arg origin_x)" /> 
+    <param name="mapping/origin_y"   value="$(arg origin_y)" /> 
+    <param name="mapping/origin_z"   value="$(arg origin_z)" /> 
+
+    <param name="mapping/odometry_topic" value="$(arg odometry_topic)"/>
+    <param name="mapping/lidar_topic" value="$(arg lidar_topic)"/>
+    <param name="mapping/map_pub_topic" value="$(arg map_pub_topic)"/>
+
+    <param name="mapping/lidar_height" value="$(arg lidar_height)"/>
+
+		<param name="mapping/prob_hit_log" value="1.2" />
+		<param name="mapping/prob_miss_log" value="-0.3" />
+		<param name="mapping/clamp_min_log" value="-2.0" />
+		<param name="mapping/clamp_max_log" value="2.0" />
+		<param name="mapping/min_occupancy_log" value="1.39" />
+
+    <param name="mapping/min_ray_length" value="0.0"/>
+    <param name="mapping/max_ray_length" value="30.0"/>
+    <param name="mapping/frame_id"      value="map"/>
+
+    <param name="fsm/target_x"  value="$(arg target_x)" />
+    <param name="fsm/target_y"  value="$(arg target_y)" />    
+    <param name="fsm/target_yaw" value="$(arg target_yaw)" />
+
+    <param name="planning/car_id"  value="$(arg car_id)" />
+    <param name="planning/traj_piece_duration" value="1.0"/>
+    <param name="planning/traj_res" value="8"/>
+    <param name="planning/dense_traj_res" value="20"/>
+
+    <param name="search/horizon"                   value="50"/>
+    <param name="search/yaw_resolution"            value="0.3"/>
+    <param name="search/lambda_heu"                value="5.0"/>
+    <param name="search/allocate_num"              value="100000"/>
+    <param name="search/check_num"                 value="5"/>
+    <param name="search/max_search_time"           value="1000.1"/>
+    <param name="search/traj_forward_penalty"      value="1.0"/>
+    <param name="search/traj_back_penalty"         value="2.5"/>
+    <param name="search/traj_gear_switch_penalty"  value="15.0"/>
+    <param name="search/traj_steer_penalty"        value="0.5"/>
+    <param name="search/traj_steer_change_penalty" value="0.0"/>
+    <param name="search/step_arc"                  value="0.9"/>
+    <param name="search/checkl"                    value="0.9"/>
+
+    <param name="search/max_vel" value="6.0" />
+    <param name="search/max_acc" value="3.0" />
+    <param name="search/max_cur" value="$(arg max_cur)" />
+
+    <param name="search/time_resolution" value="0.1" />
+    <param name="search/distance_resolution" value="0.5" />
+    <param name="search/velocity_resolution" value="1.0" />
+
+    <param name="optimizing/traj_resolution"       value="8"/> 
+    <param name="optimizing/des_traj_resolution"   value="20"/> 
+    <param name="optimizing/wei_sta_obs"           value="7000.0"/> 
+    <param name="optimizing/wei_dyn_obs"           value="7000.0"/> 
+    <param name="optimizing/wei_feas"              value="1000.0"/> 
+    <param name="optimizing/wei_sqrvar"            value="1000.0"/> 
+    <param name="optimizing/wei_time"              value="500.0"/> 
+    <param name="optimizing/dyn_obs_clearance"     value="1.0"/> 
+    <param name="optimizing/max_vel"               value="$(arg max_vel)"/> 
+    <param name="optimizing/min_vel"               value="-$(arg max_vel)"/> 
+    <param name="optimizing/max_acc"               value="$(arg max_acc)"/> 
+    <param name="optimizing/min_acc"               value="-$(arg max_acc)"/> 
+    <param name="optimizing/max_cur"               value="$(arg max_cur)"/> 
+    <param name="optimizing/traj_piece_duration"   value="1.0"/> 
+    <param name="optimizing/max_low_vel"           value="16.0"/> 
+    <param name="optimizing/max_low_acc"           value="2.5"/> 
+    <param name="optimizing/half_margin"           value="0.25"/> 
+
+  </node>
+
+</launch>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+    <node pkg="laser_simulator" type="transmit_odom_node" name="transmit_odom_node" output="screen"/>
+    <node pkg="rosbag" type="play" name="odom_bag_player" output="screen" args="--clock $(find laser_simulator)/odom.bag"/>
+    <node pkg="rosbag" type="play" name="map_bag_player" output="screen" args="--clock $(find laser_simulator)/global_map.bag"/>
+</launch>

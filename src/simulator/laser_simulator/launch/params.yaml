@@ -1,0 +1,35 @@
+# change to your own map topic
+map_topic:                          '/map_generator/global_cloud'
+
+# change to your own odom topic
+odom_topic:                         '/Odometry'
+
+# if not changed, the laer point cloud will be published in the topic of /laser_simulator/local_pointcloud
+laser_pcd_topic:                    'local_pointcloud'
+
+# in meters
+sensing_horizon:                    25.0
+
+# in Hz
+sensing_rate:                       20.0
+
+# in meters, this should be the same as the resolution of the fed global map
+pc_resolution:                      0.1
+
+# number of laser lines in vertical
+vtc_laser_line_num:                 16
+
+# in degree, vertical angle range
+vtc_laser_range_dgr:                30.0
+
+# if set false, the horizontal angle range will be 360 degree
+hrz_limited:                        false
+
+# in degree, the horizontal angle range if hrz_limited is tree
+hrz_laser_range_dgr:                90.0
+
+# number of laser lines in horizontal of 360 degree
+hrz_laser_line_num:                 360
+
+# 
+use_resolution_filter:              true

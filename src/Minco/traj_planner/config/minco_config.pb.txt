@@ -1,0 +1,95 @@
+name: "planning.minco.Config"
+version: ""
+status: "SET"
+
+planner_cfg {
+  velocity_singularity_eps: 0.01
+  low_speed_threshold: 2.0
+  weight_proximity: 1.0
+  is_fitting_only: false
+}
+
+
+map_cfg {
+  map_size_x: 2000
+  map_size_y: 2000
+  map_size_z: 3
+
+
+  s_back_len: 20.0
+
+  dyn_bounds {
+    max_lon_vel: 50.0
+    min_lon_vel: 0.0
+    max_lon_acc: 3.0
+    max_lon_dec: -6.0
+    max_lat_vel: 2.5
+    max_lat_acc: 1.25
+  }
+
+  max_grids_along_time: 2
+
+  infl_steps {
+    x_p: 5
+    x_n: 5
+    y_p: 5
+    y_n: 5
+    z_p: 1
+    z_n: 1
+  }
+
+  max_tau: 0.8
+  init_max_tau: 0.8
+  w_time: 5
+  horizon: 50
+  resolution_dp: 0.5
+  time_resolution: 0.2
+  lambda_heu: 5.0
+  allocate_num: 100000
+  check_num: 5
+  max_search_time: 1000.1
+  phi_grid_resolution: 0.3
+  traj_forward_penalty: 1.0
+  traj_back_penalty: 2.5
+  traj_gear_switch_penalty: 15.0
+  traj_steer_penalty: 0.5
+  traj_steer_change_penalty: 0.0
+  map_resl: 0.3
+  step_arc: 0.9
+  checkl: 0.2
+  onedv_res: 0.2
+  onedl_res: 0.1
+  onedt_res: 0.1
+}
+
+opt_cfg {
+ traj_resolution: 8
+  des_traj_resolution: 20
+  wei_sta_obs: 4000.0
+  wei_dyn_obs: 7000.0
+  wei_feas: 1000.0
+  wei_sqrvar: 1000.0
+  wei_time: 1000.0
+  dyn_obs_clearance: 1.0
+  max_vel: 15.0
+  min_vel: -15.0
+  max_acc: 2.0
+  min_acc: -2.0
+  max_cur: 0.3
+  traj_piece_duration: 1.0
+  max_low_vel: 16.0
+  max_low_acc: 2.5
+  half_margin: 0.25
+}
+
+
+
+
+
+
+
+
+
+
+
+

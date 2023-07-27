@@ -1,0 +1,313 @@
+  <launch>
+    <arg name="map_size_x" value="90.0"/>
+    <arg name="map_size_y" value="90.0"/>
+    <arg name="map_size_z" value="5.0"/>
+
+    <arg name="origin_x" value="-45.0"/>
+    <arg name="origin_y" value="-45.0"/>
+    <arg name="origin_z" value="0.1"/>
+
+    <arg name="lidar_height" value="0.0"/>
+    <arg name="cars_num" value="8" />
+
+    <include file="$(find traj_planner)/launch/rviz.launch">
+    </include>
+
+    <node pkg ="map_generator" name ="map_generator_easy" type ="map_generator_easy.py" output = "screen" respawn="true" >
+        <param name="map/x_size" value="$(arg map_size_x)"/>
+        <param name="map/y_size" value="$(arg map_size_y)"/>
+        <param name="map/z_size" value="$(arg map_size_z)"/>
+        <param name="map/resolution" value="0.1"/>
+
+        <param name="map/add_floor" value="false"/>
+        <param name="map/add_ceiling" value="false"/>
+
+        <param name="sensing/rate" value="1.0"/>
+
+    </node>
+
+    <include file="$(find swarm_bridge)/launch/bridge.launch">
+        <arg name="car_id" value="999" />
+        <arg name="broadcast_ip" value="127.0.0.255" />
+    </include>
+
+    <include file="$(find traj_planner)/launch/run_in_sim.launch">
+        <arg name="cars_num" value="$(arg cars_num)" />
+        <arg name="car_id" value="0"/>
+        <arg name="car_width" value="2.1"/>
+        <arg name="car_length" value="4.80"/>
+        <arg name="car_wheelbase" value="3.00"/>
+        <arg name="car_front_suspension" value="0.93"/>
+        <arg name="car_rear_suspension" value="1.10"/>
+        <arg name="car_max_steering_angle" value="55.0"/>
+        <arg name="car_d_cr" value="1.3864"/>
+        
+        <arg name="init_x" value="-35.0"/>
+        <arg name="init_y" value="-40.0"/>
+        <arg name="init_yaw" value="1.57"/>
+
+        <arg name="target_x" value="35.0"/>
+        <arg name="target_y" value="40.0"/>
+        <arg name="target_yaw" value="1.57"/>
+
+        <arg name="map_size_x" value="$(arg map_size_x)"/>
+        <arg name="map_size_y" value="$(arg map_size_y)"/>
+        <arg name="map_size_z" value="$(arg map_size_z)"/>
+
+        <arg name="origin_x" value="$(arg origin_x)"/>
+        <arg name="origin_y" value="$(arg origin_y)"/>
+        <arg name="origin_z" value="$(arg origin_z)"/>
+
+        <arg name="lidar_height" value="$(arg lidar_height)"/>
+        
+        <arg name="odom_topic" value="/car_0/odometry"/>
+        <arg name="lidar_topic" value="/car_0_laser_simulator/car_0_local_pointcloud"/>
+
+        <arg name="map_pub_topic" value="/car_0/map"/>
+    </include>
+
+    <include file="$(find traj_planner)/launch/run_in_sim.launch">
+        <arg name="cars_num" value="$(arg cars_num)" />
+        <arg name="car_id" value="1"/>
+        <arg name="car_width" value="2.1"/>
+        <arg name="car_length" value="4.80"/>
+        <arg name="car_wheelbase" value="3.00"/>
+        <arg name="car_front_suspension" value="0.93"/>
+        <arg name="car_rear_suspension" value="1.10"/>
+        <arg name="car_max_steering_angle" value="55.0"/>
+        <arg name="car_d_cr" value="1.3864"/>
+        
+        <arg name="init_x" value="-12.5"/>
+        <arg name="init_y" value="-40.0"/>
+        <arg name="init_yaw" value="1.57"/>
+
+        <arg name="target_x" value="12.5"/>
+        <arg name="target_y" value="40.0"/>
+        <arg name="target_yaw" value="1.57"/>
+
+        <arg name="map_size_x" value="$(arg map_size_x)"/>
+        <arg name="map_size_y" value="$(arg map_size_y)"/>
+        <arg name="map_size_z" value="$(arg map_size_z)"/>
+
+        <arg name="origin_x" value="$(arg origin_x)"/>
+        <arg name="origin_y" value="$(arg origin_y)"/>
+        <arg name="origin_z" value="$(arg origin_z)"/>
+
+        <arg name="lidar_height" value="$(arg lidar_height)"/>
+        
+        <arg name="odom_topic" value="/car_1/odometry"/>
+        <arg name="lidar_topic" value="/car_1_laser_simulator/car_1_local_pointcloud"/>
+
+        <arg name="map_pub_topic" value="/car_1/map"/>
+    </include>
+
+    <include file="$(find traj_planner)/launch/run_in_sim.launch">
+        <arg name="cars_num" value="$(arg cars_num)" />
+        <arg name="car_id" value="2"/>
+        <arg name="car_width" value="2.1"/>
+        <arg name="car_length" value="4.80"/>
+        <arg name="car_wheelbase" value="3.00"/>
+        <arg name="car_front_suspension" value="0.93"/>
+        <arg name="car_rear_suspension" value="1.10"/>
+        <arg name="car_max_steering_angle" value="55.0"/>
+        <arg name="car_d_cr" value="1.3864"/>
+        
+        <arg name="init_x" value="12.5"/>
+        <arg name="init_y" value="-40.0"/>
+        <arg name="init_yaw" value="1.57"/>
+
+        <arg name="target_x" value="-12.5"/>
+        <arg name="target_y" value="40.0"/>
+        <arg name="target_yaw" value="1.57"/>
+
+        <arg name="map_size_x" value="$(arg map_size_x)"/>
+        <arg name="map_size_y" value="$(arg map_size_y)"/>
+        <arg name="map_size_z" value="$(arg map_size_z)"/>
+
+        <arg name="origin_x" value="$(arg origin_x)"/>
+        <arg name="origin_y" value="$(arg origin_y)"/>
+        <arg name="origin_z" value="$(arg origin_z)"/>
+
+        <arg name="lidar_height" value="$(arg lidar_height)"/>
+        
+        <arg name="odom_topic" value="/car_2/odometry"/>
+        <arg name="lidar_topic" value="/car_2_laser_simulator/car_2_local_pointcloud"/>
+
+        <arg name="map_pub_topic" value="/car_2/map"/>
+    </include>
+
+    <include file="$(find traj_planner)/launch/run_in_sim.launch">
+        <arg name="cars_num" value="$(arg cars_num)" />
+        <arg name="car_id" value="3"/>
+        <arg name="car_width" value="2.1"/>
+        <arg name="car_length" value="4.80"/>
+        <arg name="car_wheelbase" value="3.00"/>
+        <arg name="car_front_suspension" value="0.93"/>
+        <arg name="car_rear_suspension" value="1.10"/>
+        <arg name="car_max_steering_angle" value="55.0"/>
+        <arg name="car_d_cr" value="1.3864"/>
+        
+        <arg name="init_x" value="35.0"/>
+        <arg name="init_y" value="-40.0"/>
+        <arg name="init_yaw" value="1.57"/>
+
+        <arg name="target_x" value="-35.0"/>
+        <arg name="target_y" value="40.0"/>
+        <arg name="target_yaw" value="1.57"/>
+
+        <arg name="map_size_x" value="$(arg map_size_x)"/>
+        <arg name="map_size_y" value="$(arg map_size_y)"/>
+        <arg name="map_size_z" value="$(arg map_size_z)"/>
+
+        <arg name="origin_x" value="$(arg origin_x)"/>
+        <arg name="origin_y" value="$(arg origin_y)"/>
+        <arg name="origin_z" value="$(arg origin_z)"/>
+
+        <arg name="lidar_height" value="$(arg lidar_height)"/>
+        
+        <arg name="odom_topic" value="/car_3/odometry"/>
+        <arg name="lidar_topic" value="/car_3_laser_simulator/car_3_local_pointcloud"/>
+
+        <arg name="map_pub_topic" value="/car_3/map"/>
+    </include>
+
+    <include file="$(find traj_planner)/launch/run_in_sim.launch">
+        <arg name="cars_num" value="$(arg cars_num)" />
+        <arg name="car_id" value="4"/>
+        <arg name="car_width" value="2.1"/>
+        <arg name="car_length" value="4.80"/>
+        <arg name="car_wheelbase" value="3.00"/>
+        <arg name="car_front_suspension" value="0.93"/>
+        <arg name="car_rear_suspension" value="1.10"/>
+        <arg name="car_max_steering_angle" value="55.0"/>
+        <arg name="car_d_cr" value="1.3864"/>
+        
+        <arg name="init_x" value="-35.0"/>
+        <arg name="init_y" value="40.0"/>
+        <arg name="init_yaw" value="-1.57"/>
+
+        <arg name="target_x" value="35.0"/>
+        <arg name="target_y" value="-40.0"/>
+        <arg name="target_yaw" value="-1.57"/>
+
+        <arg name="map_size_x" value="$(arg map_size_x)"/>
+        <arg name="map_size_y" value="$(arg map_size_y)"/>
+        <arg name="map_size_z" value="$(arg map_size_z)"/>
+
+        <arg name="origin_x" value="$(arg origin_x)"/>
+        <arg name="origin_y" value="$(arg origin_y)"/>
+        <arg name="origin_z" value="$(arg origin_z)"/>
+
+        <arg name="lidar_height" value="$(arg lidar_height)"/>
+        
+        <arg name="odom_topic" value="/car_4/odometry"/>
+        <arg name="lidar_topic" value="/car_4_laser_simulator/car_4_local_pointcloud"/>
+
+        <arg name="map_pub_topic" value="/car_4/map"/>
+    </include>
+
+    <include file="$(find traj_planner)/launch/run_in_sim.launch">
+        <arg name="cars_num" value="$(arg cars_num)" />
+        <arg name="car_id" value="5"/>
+        <arg name="car_width" value="2.1"/>
+        <arg name="car_length" value="4.80"/>
+        <arg name="car_wheelbase" value="3.00"/>
+        <arg name="car_front_suspension" value="0.93"/>
+        <arg name="car_rear_suspension" value="1.10"/>
+        <arg name="car_max_steering_angle" value="55.0"/>
+        <arg name="car_d_cr" value="1.3864"/>
+        
+        <arg name="init_x" value="-12.5"/>
+        <arg name="init_y" value="40.0"/>
+        <arg name="init_yaw" value="-1.57"/>
+
+        <arg name="target_x" value="12.5"/>
+        <arg name="target_y" value="-40.0"/>
+        <arg name="target_yaw" value="-1.57"/>
+
+        <arg name="map_size_x" value="$(arg map_size_x)"/>
+        <arg name="map_size_y" value="$(arg map_size_y)"/>
+        <arg name="map_size_z" value="$(arg map_size_z)"/>
+
+        <arg name="origin_x" value="$(arg origin_x)"/>
+        <arg name="origin_y" value="$(arg origin_y)"/>
+        <arg name="origin_z" value="$(arg origin_z)"/>
+
+        <arg name="lidar_height" value="$(arg lidar_height)"/>
+        
+        <arg name="odom_topic" value="/car_5/odometry"/>
+        <arg name="lidar_topic" value="/car_5_laser_simulator/car_5_local_pointcloud"/>
+
+        <arg name="map_pub_topic" value="/car_5/map"/>
+    </include>
+
+    <include file="$(find traj_planner)/launch/run_in_sim.launch">
+        <arg name="cars_num" value="$(arg cars_num)" />
+        <arg name="car_id" value="6"/>
+        <arg name="car_width" value="2.1"/>
+        <arg name="car_length" value="4.80"/>
+        <arg name="car_wheelbase" value="3.00"/>
+        <arg name="car_front_suspension" value="0.93"/>
+        <arg name="car_rear_suspension" value="1.10"/>
+        <arg name="car_max_steering_angle" value="55.0"/>
+        <arg name="car_d_cr" value="1.3864"/>
+        
+        <arg name="init_x" value="12.5"/>
+        <arg name="init_y" value="40.0"/>
+        <arg name="init_yaw" value="-1.57"/>
+
+        <arg name="target_x" value="-12.5"/>
+        <arg name="target_y" value="-40.0"/>
+        <arg name="target_yaw" value="-1.57"/>
+
+        <arg name="map_size_x" value="$(arg map_size_x)"/>
+        <arg name="map_size_y" value="$(arg map_size_y)"/>
+        <arg name="map_size_z" value="$(arg map_size_z)"/>
+
+        <arg name="origin_x" value="$(arg origin_x)"/>
+        <arg name="origin_y" value="$(arg origin_y)"/>
+        <arg name="origin_z" value="$(arg origin_z)"/>
+
+        <arg name="lidar_height" value="$(arg lidar_height)"/>
+        
+        <arg name="odom_topic" value="/car_6/odometry"/>
+        <arg name="lidar_topic" value="/car_6_laser_simulator/car_6_local_pointcloud"/>
+
+        <arg name="map_pub_topic" value="/car_6/map"/>
+    </include>
+
+    <include file="$(find traj_planner)/launch/run_in_sim.launch">
+        <arg name="cars_num" value="$(arg cars_num)" />
+        <arg name="car_id" value="7"/>
+        <arg name="car_width" value="2.1"/>
+        <arg name="car_length" value="4.80"/>
+        <arg name="car_wheelbase" value="3.00"/>
+        <arg name="car_front_suspension" value="0.93"/>
+        <arg name="car_rear_suspension" value="1.10"/>
+        <arg name="car_max_steering_angle" value="55.0"/>
+        <arg name="car_d_cr" value="1.3864"/>
+        
+        <arg name="init_x" value="35.0"/>
+        <arg name="init_y" value="40.0"/>
+        <arg name="init_yaw" value="-1.57"/>
+
+        <arg name="target_x" value="-35.0"/>
+        <arg name="target_y" value="-40.0"/>
+        <arg name="target_yaw" value="-1.57"/>
+
+        <arg name="map_size_x" value="$(arg map_size_x)"/>
+        <arg name="map_size_y" value="$(arg map_size_y)"/>
+        <arg name="map_size_z" value="$(arg map_size_z)"/>
+
+        <arg name="origin_x" value="$(arg origin_x)"/>
+        <arg name="origin_y" value="$(arg origin_y)"/>
+        <arg name="origin_z" value="$(arg origin_z)"/>
+
+        <arg name="lidar_height" value="$(arg lidar_height)"/>
+        
+        <arg name="odom_topic" value="/car_7/odometry"/>
+        <arg name="lidar_topic" value="/car_7_laser_simulator/car_7_local_pointcloud"/>
+
+        <arg name="map_pub_topic" value="/car_7/map"/>
+    </include>
+  </launch>

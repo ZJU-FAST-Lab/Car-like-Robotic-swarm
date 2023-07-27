@@ -1,0 +1,14 @@
+kinematics_simulator_node:
+  simulator:
+    ugv_type: 2   # 0: omnidirectional robots; 1: differential robots; 2: ackermann robots; 
+    init_x: 0.0
+    init_y: 0.0
+    init_yaw: 0.0
+    time_resolution: 0.01
+    max_longitude_speed: 5.0
+    max_latitude_speed: 1.5
+    max_angular_vel: 24.0
+    max_steer_angle: 0.8
+    wheel_base: 0.6
+    time_delay: 0.0
+    noise_std: 0.0

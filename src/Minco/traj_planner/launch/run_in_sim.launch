@@ -1,0 +1,83 @@
+<launch>
+  <arg name="cars_num" />
+  <arg name="car_id"/>
+  <arg name="car_width"/>
+  <arg name="car_length"/>
+  <arg name="car_wheelbase"/>
+  <arg name="car_front_suspension"/>
+  <arg name="car_rear_suspension"/>
+  <arg name="car_max_steering_angle"/>
+  <arg name="car_d_cr"/>
+
+  <arg name="init_x"/>
+  <arg name="init_y"/>
+  <arg name="init_yaw"/> 
+
+  <arg name="target_x"/>
+  <arg name="target_y"/> 
+  <arg name="target_yaw"/>
+
+  <arg name="map_size_x"/>
+  <arg name="map_size_y"/>
+  <arg name="map_size_z"/>
+
+  <arg name="origin_x"/>
+  <arg name="origin_y"/>
+  <arg name="origin_z"/>
+
+  <arg name="lidar_height"/>
+
+  <arg name="odom_topic"/>
+  <arg name="lidar_topic"/>
+  <arg name="map_pub_topic"/>
+
+  <include file="$(find traj_planner)/launch/simulator.launch" >
+      <arg name="car_id" value="$(arg car_id)" />
+      <arg name="init_x" value="$(arg init_x)" />
+      <arg name="init_y" value="$(arg init_y)" />
+      <arg name="init_yaw" value="$(arg init_yaw)" />
+  </include>
+
+  <!-- main algorithm params -->
+  <include file="$(find traj_planner)/launch/advanced_param.xml">
+
+    <arg name="cars_num" value="$(arg cars_num)"/>
+    <arg name="car_id" value="$(arg car_id)"/>
+    <arg name="car_width" value="$(arg car_width)"/>
+    <arg name="car_length" value="$(arg car_length)"/>
+    <arg name="car_wheelbase" value="$(arg car_wheelbase)"/>
+    <arg name="car_front_suspension" value="$(arg car_front_suspension)"/>
+    <arg name="car_rear_suspension" value="$(arg car_rear_suspension)"/>
+    <arg name="car_max_steering_angle" value="$(arg car_max_steering_angle)"/>
+    <arg name="car_d_cr" value="$(arg car_d_cr)"/>
+
+
+    <arg name="map_size_x" value="$(arg map_size_x)"/>
+    <arg name="map_size_y" value="$(arg map_size_y)"/>
+    <arg name="map_size_z" value="$(arg map_size_z)"/>
+
+    <arg name="origin_x" value="$(arg origin_x)"/>
+    <arg name="origin_y" value="$(arg origin_y)"/>
+    <arg name="origin_z" value="$(arg origin_z)"/>
+
+    <arg name="target_x" value="$(arg target_x)" />
+    <arg name="target_y" value="$(arg target_y)" />
+    <arg name="target_yaw" value="$(arg target_yaw)" />
+
+    <arg name="odometry_topic" value="$(arg odom_topic)"/>
+    <arg name="lidar_topic" value="$(arg lidar_topic)"/>
+    <arg name="map_pub_topic" value="$(arg map_pub_topic)"/>
+
+    <arg name="lidar_height" value="$(arg lidar_height)"/>
+
+    <!-- maximum velocity and acceleration the car will reach -->
+    <arg name="max_vel" value="6.0" />
+    <arg name="max_acc" value="3.0" />
+    <arg name="max_cur" value="0.3"/>
+
+    <!-- <arg name="planning_horizon" value="7.5" />  -->
+
+    
+  </include>
+
+</launch>
