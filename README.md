@@ -27,7 +27,7 @@ Our software is developed and tested in Ubuntu 20.04 with ROS installed.
 
 ```
 git clone https://github.com/ZJU-FAST-Lab/Car-like-Robotic-swarm.git
-cd car_swarm
+cd Car-like-Robotic-swarm
 ```
 
 2. Compile it.
