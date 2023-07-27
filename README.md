@@ -59,6 +59,7 @@ Here is an example:
 <p align="center">
   <img src="figs/demo.gif" width = "800"/>
 </p>
+
 **Tip:** We recommend developers to use **rosmon** to replace the **roslaunch** since rosmon is more friendly to mulit-robot systems.
 
 Please refer to [swarm formation](https://github.com/ZJU-FAST-Lab/Swarm-Formation) for more details of rosmon.
